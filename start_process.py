@@ -14,9 +14,9 @@ logger.addHandler(file_handler)
 #logging.basicConfig(filename='process.log', level=logging.DEBUG, format='%(asctime)s:%(levelname)s:%(module)s:%(message)s')
 
 def main():
-	ingestor = streamer.Ingestor('rtmp://www.thezerogames.com/livere/', 'haZhXN9YntVSEfSu', 1280, 720, '/home/nkottapalli/livespott/rtmpingestor/test/vpipe/')
+	ingestor = streamer.Ingestor('rtmp://sourcedomain.com/appname/', 'streamkey', 1280, 720, 'path to video pipe')
 	pipein = ingestor.initialize()
-	broadcastor = streamer.Broadcastor('rtmp://10.0.0.248/live/','haZhXN9YntVSEfSu', 1280, 720, 'rtmp://www.thezerogames.com/livere/haZhXN9YntVSEfSu')
+	broadcastor = streamer.Broadcastor('rtmp://sourcedomain.com/appname/','streamkey', 1280, 720, 'rtmp://destinationdomain.com/appname/streamkey')
 	pipeout = broadcastor.initialize()
 	while(ingestor.more()):
 		logger.debug('Frame Processing Start')
