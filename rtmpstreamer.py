@@ -26,12 +26,11 @@ ingestor_logger.addHandler(ingestor_handler)
 
 # Ingestor : rtmp://domain.appname.streamkey -> videopipe compatible with numpy <=> opencv
 class Ingestor:
-	def __init__(self, source, streamkey, width, height, path):
+	def __init__(self, source, streamkey, width, height):
 		self.source = source
 		self.streamkey = streamkey
 		self.width = width
 		self.height = height
-		self.path = path
 		self.bin = 'ffmpeg'
 		self._address = self.source + self.streamkey
 		self._cmdx = [self.bin,'-loglevel','quiet','-i',self._address,'-f','rawvideo','-tune','zerolatency','-fflags','nobuffer','-preset','ultrafast','-pix_fmt','bgr24','-c:v','rawvideo','-']
@@ -86,9 +85,6 @@ class Ingestor:
 
 	def more(self):
 		return self._grabbed
-
-	def get_destination(self):
-		return self.path
 
 	def stop(self):
 		self.stopped = True
