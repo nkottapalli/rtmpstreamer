@@ -75,7 +75,7 @@ class Ingestor:
 			self.last_frame_readat = self.start_time
 		_vframe = np.fromstring(self._frame,dtype='uint8')
 		_vframe = _vframe.reshape((self.height, self.width, 3))
-		cv2.putText(_vframe,'Copyright 2018, Asianet News Network.', (5, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1, cv2.LINE_AA)
+		cv2.putText(_vframe,'Copyright YYYY, Comany Name Goes Here.', (5, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1, cv2.LINE_AA)
 		elapsed_last_read = time.time() - self.last_frame_readat
 		rps = 1 / elapsed_last_read
 		self.rfps = self.frames_reads / (time.time()-self.first_readat)
